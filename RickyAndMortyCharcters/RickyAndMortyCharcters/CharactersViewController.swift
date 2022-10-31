@@ -11,21 +11,21 @@ class CharactersViewController
 : UIViewController {
 
     @IBOutlet weak var charactersTV: UITableView!
-    let charctersVM = CharactersViewModel()
+    let charsctersVM = CharactersViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         charactersTV.register(UINib(nibName: "CharacterCell", bundle: nil), forCellReuseIdentifier: "CharacterCell")
         charactersTV.dataSource = self
         defineViewModel()
-        charctersVM.getCharacters()
+        charsctersVM.getCharacters()
         
     }
     
     
     func defineViewModel() {
         
-        charctersVM.reloadTableView = {
+        charsctersVM.reloadTableView = {
             self.charactersTV.reloadData()
         }
     }
@@ -34,12 +34,12 @@ class CharactersViewController
 
 extension CharactersViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        charctersVM.charcterProfiles.count
+        charsctersVM.charcterProfiles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterCell", for: indexPath) as! CharacterCell
-        cell.characterProfile = charctersVM.charcterProfiles[indexPath.row]
+        cell.characterProfile = charsctersVM.charcterProfiles[indexPath.row]
         return cell
     }
     
@@ -52,25 +52,12 @@ extension CharactersViewController: UITableViewDelegate {
         70.0
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 1 == charsctersVM.charcterProfiles.count {
+            charsctersVM.getCharacters()
+        }
+    }
 }
 
 
-
-
-//struct CharacterProfile {
-//    let name: String
-//    let status: String
-//    let species: String
-//    let imageUrl: String
-//    var statusAndSpecies: String {
-//        return "\(status) - \(species)"
-//    }
-//
-//    init(name: String, status: String, species: String, imageUrl: String) {
-//        self.imageUrl = imageUrl
-//        self.species = species
-//        self.status = status
-//        self.name = name
-//    }
-//}
 

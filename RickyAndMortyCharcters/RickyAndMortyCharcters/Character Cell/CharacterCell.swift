@@ -31,7 +31,7 @@ class CharacterCell: UITableViewCell {
                     if let data = try? Data(contentsOf: url) {
                         let image = UIImage(data: data)
                         DispatchQueue.main.async {
-                            self.imageView?.image = image
+                            self.characterImageView?.image = image
                         }
                         ImageCache.shared[url] = image
                     }
