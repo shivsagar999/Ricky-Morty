@@ -6,3 +6,20 @@
 //
 
 import Foundation
+
+class RAMNetworkHandler {
+    
+    let networkStatus = RAMNetworkStatus.shared
+    
+    var networkStatusChanged: ((Bool) -> ())?
+    
+    
+    func initiateNetworkStatusCheck(completionHandler: @escaping ((Bool) -> ())) {
+        networkStatus.startMonitoring()
+        networkStatus.netStatusChangehandler = { isConnected in
+            self.networkStatusChanged?(isConnected)
+        }
+        completionHandler(networkStatus.isConnected)
+    }
+    
+}

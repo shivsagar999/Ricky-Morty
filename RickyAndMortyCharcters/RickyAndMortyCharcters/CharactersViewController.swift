@@ -9,17 +9,47 @@ import UIKit
 
 class CharactersViewController
 : UIViewController {
-
+    
     @IBOutlet weak var charactersTV: UITableView!
+    
+    @IBOutlet weak var connectingView: UIView!
+    
     let charsctersVM = CharactersViewModel()
+    let networkHandler = RAMNetworkHandler()
+    var initiatedAPICall = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         charactersTV.register(UINib(nibName: "CharacterCell", bundle: nil), forCellReuseIdentifier: "CharacterCell")
         charactersTV.dataSource = self
         defineViewModel()
-        charsctersVM.getCharacters()
+        networkHandler.initiateNetworkStatusCheck { isConnected in
+            if isConnected {
+                self.performInitialAPICall()
+            }
+            self.networkHandler.networkStatusChanged = { connected in
+                if connected && !self.initiatedAPICall {
+                    self.performInitialAPICall()
+                } else if !connected {
+                    DispatchQueue.main.async {
+                        self.connectingView.isHidden = false
+                    }
+                } else if connected {
+                    DispatchQueue.main.async {
+                        self.connectingView.isHidden = true
+                    }
+                }
+            }
+        }
         
+        
+    }
+    
+    
+    func performInitialAPICall() {
+        initiatedAPICall = true
+        self.charsctersVM.getCharacters()
     }
     
     
@@ -28,6 +58,10 @@ class CharactersViewController
         charsctersVM.reloadTableView = {
             self.charactersTV.reloadData()
         }
+    }
+    
+    func presentViewController(nibName: String) {
+        
     }
     
 }

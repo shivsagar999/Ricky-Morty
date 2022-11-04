@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,34 +17,124 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tdC-cb-6gJ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="tvf-Ng-lZW"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="2Yu-ME-cF7"/>
-                                </connections>
-                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EM0-NF-YuX">
+                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
+                                <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wtz-sW-QvW">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="oJb-CV-OtJ">
+                                                <rect key="frame" x="139.5" y="9.5" width="135.5" height="21.5"/>
+                                                <subviews>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="vIE-9t-znn">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="21.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21.5" id="Zcy-Nd-UD8"/>
+                                                        </constraints>
+                                                    </activityIndicatorView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYI-5E-DM0">
+                                                        <rect key="frame" x="40" y="0.0" width="95.5" height="21.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="oJb-CV-OtJ" firstAttribute="centerX" secondItem="wtz-sW-QvW" secondAttribute="centerX" id="6uC-GS-lU9"/>
+                                            <constraint firstAttribute="height" constant="40" id="YHH-Q7-hEf"/>
+                                            <constraint firstItem="oJb-CV-OtJ" firstAttribute="centerY" secondItem="wtz-sW-QvW" secondAttribute="centerY" id="anN-hj-Tfa"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tdC-cb-6gJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="814"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="tvf-Ng-lZW"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="2Yu-ME-cF7"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="tdC-cb-6gJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="MKh-F9-3IL"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tdC-cb-6gJ" secondAttribute="bottom" id="N7p-TV-ks7"/>
-                            <constraint firstItem="tdC-cb-6gJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TUu-a2-oIi"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tdC-cb-6gJ" secondAttribute="trailing" id="tcL-4Y-rBQ"/>
+                            <constraint firstItem="EM0-NF-YuX" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="AAo-nr-JjN"/>
+                            <constraint firstItem="EM0-NF-YuX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="V3W-9f-ojx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="EM0-NF-YuX" secondAttribute="bottom" id="iup-aQ-Aid"/>
+                            <constraint firstItem="EM0-NF-YuX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vzM-OD-xV0"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="charactersTV" destination="tdC-cb-6gJ" id="hFS-Aw-ZUU"/>
+                        <outlet property="connectingView" destination="wtz-sW-QvW" id="NWb-5V-KoP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-281" y="94"/>
+            <point key="canvasLocation" x="-281.15942028985512" y="93.75"/>
+        </scene>
+        <!--No Network View Controller-->
+        <scene sceneID="G1I-yv-lql">
+            <objects>
+                <viewController id="yOF-79-GXu" customClass="NoNetworkViewController" customModule="RickyAndMortyCharcters" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xoe-ph-w4h">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="d04-AM-CMI">
+                                <rect key="frame" x="62" y="248" width="290.5" height="185.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wifi.exclamationmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qhb-HA-VVl">
+                                        <rect key="frame" x="118" y="1" width="54" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="54" id="M0Y-xM-AdL"/>
+                                            <constraint firstAttribute="height" constant="50" id="bEL-6h-AHI"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Lfa-J4-ahd">
+                                        <rect key="frame" x="0.0" y="80" width="290.5" height="41"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You seem to be offline." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hh-L8-7xy">
+                                                <rect key="frame" x="0.0" y="0.0" width="290.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please connect to a Network and Retry. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAy-C4-6Cz">
+                                                <rect key="frame" x="0.0" y="23" width="290.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OP9-J0-Zde">
+                                        <rect key="frame" x="113" y="151" width="64.5" height="34.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Retry" cornerStyle="capsule"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZBE-cO-VsN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="d04-AM-CMI" firstAttribute="centerX" secondItem="xoe-ph-w4h" secondAttribute="centerX" id="av1-IM-WrU"/>
+                            <constraint firstItem="d04-AM-CMI" firstAttribute="top" secondItem="ZBE-cO-VsN" secondAttribute="top" constant="200" id="ouN-4L-bTU"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4yR-k4-A2P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="610" y="102"/>
         </scene>
     </scenes>
     <resources>
+        <image name="wifi.exclamationmark" catalog="system" width="128" height="96"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
