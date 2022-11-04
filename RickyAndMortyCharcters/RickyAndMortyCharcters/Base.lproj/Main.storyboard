@@ -80,7 +80,7 @@
         <!--No Network View Controller-->
         <scene sceneID="G1I-yv-lql">
             <objects>
-                <viewController id="yOF-79-GXu" customClass="NoNetworkViewController" customModule="RickyAndMortyCharcters" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoNetworkViewController" id="yOF-79-GXu" customClass="NoNetworkViewController" customModule="RickyAndMortyCharcters" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xoe-ph-w4h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -116,6 +116,9 @@
                                         <rect key="frame" x="113" y="151" width="64.5" height="34.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Retry" cornerStyle="capsule"/>
+                                        <connections>
+                                            <action selector="retryTapped:" destination="yOF-79-GXu" eventType="touchUpInside" id="w4P-vd-eHn"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

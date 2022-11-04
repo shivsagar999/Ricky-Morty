@@ -42,10 +42,19 @@ class CharactersViewController
                 }
             }
         }
-        
-        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if !self.initiatedAPICall && networkHandler.isConnected {
+            performInitialAPICall()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if !self.initiatedAPICall && !networkHandler.isConnected  {
+            self.presentViewController(nibName: "NoNetworkViewController")
+        }
+    }
     
     func performInitialAPICall() {
         initiatedAPICall = true
@@ -61,7 +70,14 @@ class CharactersViewController
     }
     
     func presentViewController(nibName: String) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
+        var VC = storyBoard.instantiateViewController(withIdentifier: nibName)
+        
+        VC.modalPresentationStyle = .fullScreen
+        VC.modalTransitionStyle = .crossDissolve
+        
+        present(VC, animated: true)
     }
     
 }

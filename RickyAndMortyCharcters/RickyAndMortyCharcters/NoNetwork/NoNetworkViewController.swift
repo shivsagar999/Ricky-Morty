@@ -9,13 +9,33 @@ import UIKit
 
 class NoNetworkViewController: UIViewController {
 
+    let networkHandler = RAMNetworkHandler()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        networkHandler.initiateNetworkStatusCheck { isConnected in
+            if(isConnected) {
+                self.dismiss(animated: true)
+            } else {
+                self.networkHandler.networkStatusChanged = { isConnected in
+                    if(isConnected) {
+                        DispatchQueue.main.async {
+                            self.dismiss(animated: true)
+                        }
+                        
+                    }
+                }
+            }
+        }
+        
     }
     
-
+    
+    
+    @IBAction func retryTapped(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -13,6 +13,10 @@ class RAMNetworkHandler {
     
     var networkStatusChanged: ((Bool) -> ())?
     
+    var isConnected: Bool {
+        return networkStatus.isConnected
+    }
+    
     
     func initiateNetworkStatusCheck(completionHandler: @escaping ((Bool) -> ())) {
         networkStatus.startMonitoring()
@@ -21,5 +25,7 @@ class RAMNetworkHandler {
         }
         completionHandler(networkStatus.isConnected)
     }
+    
+    
     
 }
