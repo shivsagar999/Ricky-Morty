@@ -19,9 +19,17 @@ struct Profile: Decodable, Identifiable, Equatable {
     var status: String
     var species: String
     var image: String
-    
+    var location: Location
+    var episode: [String]
+
     var statusAndSpecies: String {
         return "\(status) - \(species)"
     }
-    
 }
+
+struct Location: Decodable, Equatable {
+    var name: String
+    var url: String
+}
+
+

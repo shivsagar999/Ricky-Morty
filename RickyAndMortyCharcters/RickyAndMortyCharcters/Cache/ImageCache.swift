@@ -28,7 +28,7 @@ final class ImageCache {
     // 1st level cache, that contains encoded images
     private lazy var imageCache: NSCache<AnyObject, AnyObject> = {
         let cache = NSCache<AnyObject, AnyObject>()
-        cache.countLimit = config.countLimit
+        cache.totalCostLimit = config.memoryLimit
         return cache
     }()
     // 2nd level cache, that contains decoded images

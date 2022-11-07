@@ -11,8 +11,8 @@ import Foundation
 
 protocol APIEngineProtocol {
     
-    func getCharcaters(page: Int,
-                       completionHandler: @escaping (Character?, RAMError?) -> ())
+    func getCharcaters(page: Int, completionHandler: @escaping (Character?, RAMError?) -> ())
+    func getEpisode(url: String, completionHandler: @escaping (Episode?, RAMError?) -> ())
     
 }
 
@@ -36,7 +36,21 @@ class APIEngine: APIEngineProtocol {
         }
     }
     
-    
+    func getEpisode(url: String, completionHandler: @escaping (Episode?, RAMError?) -> ()) {
+        
+        var result: Episode?
+        var error: RAMError?
+        
+        DispatchQueue.global().async {
+            let episodeManager = EpisodeManager()
+            episodeManager.getEpisode(url: url) { res, err in
+                result = res
+                error = err
+                completionHandler(result, error)
+            }
+        }
+        
+    }
     
     
 }
