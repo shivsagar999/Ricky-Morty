@@ -9,7 +9,6 @@ import UIKit
 
 class CharacterCell: UITableViewCell {
     
-    
     //Image View
     @IBOutlet weak var characterImageView: UIImageView!
     //Labels
@@ -20,10 +19,12 @@ class CharacterCell: UITableViewCell {
     
     var characterProfile: Profile? {
         didSet {
+            let id = characterProfile?.id
             self.name.text = characterProfile?.name
             self.statusAndSpecies.text = characterProfile?.statusAndSpecies
             self.lifeIndicator.backgroundColor = characterProfile?.status == "Alive" ? UIColor.systemGreen : UIColor.systemRed
             let url = URL(string: self.characterProfile?.image ?? "")!
+            
             if let image = ImageCache.shared.image(for: url) {
                 self.characterImageView.image = image
             } else {
@@ -31,7 +32,10 @@ class CharacterCell: UITableViewCell {
                     if let data = try? Data(contentsOf: url) {
                         let image = UIImage(data: data)
                         DispatchQueue.main.async {
-                            self.characterImageView?.image = image
+                            if id == self.characterProfile?.id {
+                                self.characterImageView?.image = image
+                                self.characterImageView.isHidden = false
+                            }
                         }
                         ImageCache.shared[url] = image
                     }
@@ -47,10 +51,11 @@ class CharacterCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        
-        
         // Configure the view for the selected state
+    }
+    
+    override func prepareForReuse() {
+        self.characterImageView.image = nil
     }
     
 }

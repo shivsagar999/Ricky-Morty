@@ -19,7 +19,7 @@ class CharactersViewController
     let charactersVM = CharactersViewModel()
     let networkHandler = RAMNetworkHandler()
     var initiatedAPICall = false
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +84,7 @@ class CharactersViewController
     func presentViewController(nibName: String) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
-        var VC = storyBoard.instantiateViewController(withIdentifier: nibName)
+        let VC = storyBoard.instantiateViewController(withIdentifier: nibName)
         
         VC.modalPresentationStyle = .fullScreen
         VC.modalTransitionStyle = .crossDissolve
