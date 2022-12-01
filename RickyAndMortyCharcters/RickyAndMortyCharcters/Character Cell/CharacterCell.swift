@@ -27,6 +27,7 @@ class CharacterCell: UITableViewCell {
             
             if let image = ImageCache.shared.image(for: url) {
                 self.characterImageView.image = image
+                self.characterImageView.isHidden = false
             } else {
                 DispatchQueue.global().async {
                     if let data = try? Data(contentsOf: url) {
