@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VOL-US-RfB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VOL-US-RfB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -100,12 +100,12 @@
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="QHl-M9-iJf">
-                                                <rect key="frame" x="20" y="420" width="148.5" height="205"/>
+                                                <rect key="frame" x="20" y="420" width="374" height="205"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Smo-Wt-QwD">
                                                         <rect key="frame" x="0.0" y="0.0" width="131.5" height="63"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzH-96-CyK">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzH-96-CyK">
                                                                 <rect key="frame" x="0.0" y="0.0" width="71" height="31.5"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                                                 <nil key="textColor"/>
@@ -180,6 +180,7 @@
                                             <constraint firstItem="crj-vS-gZt" firstAttribute="top" secondItem="j90-Qs-w31" secondAttribute="top" id="PKf-ey-OmV"/>
                                             <constraint firstItem="QHl-M9-iJf" firstAttribute="top" secondItem="crj-vS-gZt" secondAttribute="bottom" constant="20" id="ctF-IZ-N8J"/>
                                             <constraint firstAttribute="bottom" secondItem="QHl-M9-iJf" secondAttribute="bottom" id="hgB-cu-XCj"/>
+                                            <constraint firstAttribute="trailing" secondItem="QHl-M9-iJf" secondAttribute="trailing" constant="20" id="kK7-bt-Hun"/>
                                             <constraint firstItem="QHl-M9-iJf" firstAttribute="leading" secondItem="j90-Qs-w31" secondAttribute="leading" constant="20" id="o1Y-O9-WIk"/>
                                             <constraint firstAttribute="trailing" secondItem="crj-vS-gZt" secondAttribute="trailing" id="pql-AJ-stS"/>
                                         </constraints>

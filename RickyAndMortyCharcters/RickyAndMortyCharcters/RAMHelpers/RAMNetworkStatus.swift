@@ -10,8 +10,6 @@ import Network
 
 class RAMNetworkStatus {
     
-    var isMonitoring: Bool = false
-    
     static let shared = RAMNetworkStatus()
     
     var monitor: NWPathMonitor?

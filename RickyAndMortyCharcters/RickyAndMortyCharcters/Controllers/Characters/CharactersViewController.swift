@@ -7,8 +7,7 @@
 
 import UIKit
 
-class CharactersViewController
-: UIViewController {
+class CharactersViewController : UIViewController {
     
     @IBOutlet weak var charactersTV: UITableView!
     
